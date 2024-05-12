@@ -51,7 +51,22 @@
           color: #ADD8E6;
           font-size: small;
         }
-        
+        .btn2 {
+          background-color: #CCCCCC;
+          color: #081C46;
+        }
+        .btn2:hover {
+            color: #CCCCCC;
+            background-color: #0F2E66;
+        }
+        .btn3 {
+            color: #CCCCCC;
+            background-color: #0F2E66;
+        }
+        .btn3:hover {
+          background-color: #CCCCCC;
+          color: #081C46;
+        }
         .icon{
           flex: 1;
           text-align: right;
@@ -129,7 +144,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="#">Change Password</a>
-                  <a class="dropdown-item" href="#">Student Profile</a>
+                  <a class="dropdown-item" href="dashboard.html">Student Profile</a>
                   <a class="dropdown-item" href="#">Pre-enlisment</a>
                   <a class="dropdown-item" href="#">Enrollment</a>
                   <a class="dropdown-item" href="#">Add/Cross-Enroll/Drop Subject</a>
@@ -173,7 +188,7 @@
                 </div>
               </div>
               <li class="nav-item">
-                <a class="btn btn-link" href="index.html">Logout</a>
+                <a class="btn btn-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
               </li>
               <i class="icon fa-solid fa-circle-xmark pe-5" onclick="closemenu()" style="color:#081C46"></i>
             </ul>
@@ -193,7 +208,28 @@
   
   
   
-  
+<!-- Small modal -->
+<div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        
+        <h4>Log Out Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to log out? <br /></p>
+        <div class="actionsBtns">
+            <form action="/logout" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <input id="logoutBtn" type="submit" class="btn btn3 btn-default btn-primary" data-dismiss="modal" value="Logout" />
+	              <button class="btn btn2 btn-default" data-dismiss="modal">Cancel</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   
   
   
@@ -246,6 +282,19 @@
     }
     
   </script>
+  <script>
+    // Function to handle logout
+    function logout() {
+      // Perform any logout actions here if needed
+  
+      // Redirect to index.html
+      window.location.href = "index.html";
+    }
+  
+    // Add event listener to the logout button
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+  </script>
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
